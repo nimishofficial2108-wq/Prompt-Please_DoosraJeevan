@@ -1,0 +1,24 @@
+{
+  "name": "doosra-jeevan-blockchain",
+  "version": "1.0.0",
+  "description": "Real smart contract layer for Doosra Jeevan (replaces simulated blockchain in data.js)",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:amoy": "hardhat run scripts/deploy.js --network amoy",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "node": "hardhat node",
+    "server": "node server/index.js"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3",
+    "cors": "^2.8.5",
+    "ethers": "^6.13.0",
+    "express": "^4.21.2"
+  }
+}

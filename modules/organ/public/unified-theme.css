@@ -1,0 +1,17 @@
+/* The module retains its functional complex tables and forms; align with DoosraJeevan. */
+:root { --brand-navy:#071b55;--brand-coral:#ff554b; }
+body.gov-theme { background:#fffdfb; font-family:Inter,system-ui,Arial,sans-serif; }
+.integration-disclaimer { position:relative;z-index:9999;background:#fff0ed;color:#071b55;padding:11px 22px;font:600 13px/1.55 Inter,sans-serif;border-bottom:1px solid #ffd6ca;text-align:center; }
+.integration-disclaimer a { color:#071b55;text-decoration:underline;margin-left:9px; }
+.app-shell { background:#fffdfb; }
+.sidebar-brand, .gov-header { border-bottom-color:#e4edf7; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline:3px solid #ff554b!important; outline-offset:3px; }
+@media(max-width:700px){.integration-disclaimer{font-size:12px;padding:10px;} }
+
+/* Parent DoosraJeevan shell owns navigation; remove redundant embed banner. */
+.integration-disclaimer {display:none!important}
+.gov-utility-bar{background:#f5f8ff}
+body.gov-theme{margin:0;color:#071b55}
+
+/* DoosraJeevan outer navigation handles services and global settings. */
+.gov-utility-bar{display:none!important}
