@@ -1,0 +1,6 @@
+{
+  "name": "Intracranial Hemorrhage CT Visualizer",
+  "description": "Quantitative neuro-radiological workstation for 3D brain CT scan NIfTI (.nii) visualization, hemodynamic acoustic sonification, and biophysiologic intracranial hemorrhage staging.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

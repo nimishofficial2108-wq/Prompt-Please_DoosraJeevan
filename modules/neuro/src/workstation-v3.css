@@ -1,0 +1,54 @@
+/* DoosraJeevan UI V3 - self-contained responsive workstation layout. */
+:root{font-family:Inter,system-ui,-apple-system,sans-serif}
+*,:before,:after{box-sizing:border-box}
+html,body,#root{width:100%;min-width:0;margin:0;min-height:100%}
+.dj-neuro-shell{height:auto;min-height:100vh;overflow:visible;font-family:Inter,system-ui,-apple-system,sans-serif;background:#f6fafd}
+.dj-workspace-header{flex:none!important;display:flex;flex-direction:column;background:#071b55;color:#fff;border-bottom:3px solid #ff554b;z-index:35;padding:0 24px;box-shadow:0 3px 15px rgba(7,27,85,.12);}
+.dj-workspace-topline{min-height:76px;display:flex;gap:20px;align-items:center;justify-content:space-between;padding:14px 0;min-width:0}
+.dj-workspace-brand{display:flex;align-items:center;gap:13px;min-width:0}
+.dj-workspace-brand-icon{flex:none;display:grid;place-items:center;width:42px;height:42px;background:#eaf5ff;color:#071b55;border-radius:13px}
+.dj-workspace-brand-copy{min-width:0}
+.dj-workspace-brand-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;font-size:19px;line-height:1.3;font-weight:800;letter-spacing:-.02em;color:white}
+.dj-workspace-brand-title span{font-size:15px;font-weight:500;color:#cde6ff}
+.dj-workspace-brand-title small{font-size:10px;letter-spacing:.09em;background:#eaf5ff;color:#071b55;padding:3px 7px;border-radius:5px;font-weight:800}
+.dj-workspace-patient-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:#dbeafe;font-size:12px;line-height:1.4;margin-top:4px}
+.dj-workspace-status{font-size:11px;padding:3px 8px;border-radius:6px;line-height:1.3}
+.dj-workspace-status.is-normal{background:#d9fbe9;color:#066b3e}.dj-workspace-status.is-review{background:#fff2e9;color:#a43a24}
+.dj-workspace-top-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:flex-end}
+.dj-workspace-education{font-size:11px;color:#bdd3f0;max-width:220px;line-height:1.4;text-align:right}
+.dj-workspace-controls{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 20px;align-items:center;padding:12px 0 16px;border-top:1px solid rgba(255,255,255,.18)}
+.dj-workspace-controls-left,.dj-workspace-controls-right{display:flex;flex-wrap:wrap;align-items:end;gap:10px;min-width:0}
+.dj-workspace-input-label{display:flex;flex-direction:column;gap:5px;font-size:10px;color:#cbdef5;letter-spacing:.025em}
+.dj-workspace-select{appearance:auto;max-width:240px;min-width:125px;width:100%;height:38px;padding:5px 10px;background:#fff;color:#071b55;border-radius:8px;border:1px solid #d6e9fc;font:600 12px/1.3 Inter,system-ui,sans-serif}
+.dj-patient-select{max-width:230px}
+.dj-workspace-button,.dj-workspace-icon-button{border-radius:10px;border:1px solid rgba(218,233,250,.55);background:rgba(255,255,255,.12);color:white;min-height:38px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 13px;cursor:pointer;font:600 12px/1.3 Inter,system-ui,sans-serif;white-space:nowrap;transition:background .15s ease}
+.dj-workspace-button:hover,.dj-workspace-icon-button:hover{background:rgba(255,255,255,.24)}
+.dj-workspace-primary{background:#ff554b;border-color:#ff554b}.dj-workspace-primary:hover{background:#ec3f35}
+.dj-audio-button{background:#eaf5ff;border-color:#eaf5ff;color:#071b55}.dj-audio-ready{background:#d9fbe9;border-color:#d9fbe9;color:#076b42}
+.dj-audio-button:hover{background:#d1eaff}.dj-workspace-icon-button{width:38px;padding:7px}
+.dj-workspace-audio-group{height:38px;display:flex;align-items:center;gap:8px;color:#e6f4ff;font-size:11px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:0 12px}
+.dj-workspace-audio-group input{width:78px;accent-color:#ff554b}
+.dj-neuro-workstation{height:auto!important;flex:none!important;min-height:550px;width:100%;display:flex;position:relative;}
+.dj-neuro-panel-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;padding:16px!important;align-items:stretch;width:100%;height:auto!important;overflow:visible!important}
+.dj-neuro-panel{display:flex!important;flex-direction:column!important;min-width:0!important;min-height:545px!important;height:auto!important;overflow:hidden;border:1px solid #dae5f0;border-radius:15px;background:white;box-shadow:0 4px 20px rgba(7,27,85,.05)}
+.dj-neuro-scanner{display:flex!important;flex-direction:column!important;flex:1 1 auto!important;min-width:0!important;min-height:545px!important;height:auto!important;overflow:hidden;background:#05070d}
+.dj-neuro-panel-toolbar{display:flex!important;flex-wrap:wrap!important;align-items:center;justify-content:space-between;min-height:60px;gap:8px 12px;background:white;padding:12px 14px!important;border-bottom:1px solid #e0e9f1;flex-shrink:0;}
+.dj-neuro-panel-title{display:flex;align-items:center;flex-wrap:wrap;min-width:0;gap:8px;font-family:Inter,system-ui,sans-serif;flex:1 1 220px}
+.dj-neuro-panel-title span{max-width:100%;white-space:normal!important;overflow-wrap:anywhere}
+.dj-neuro-zoom{display:flex;align-items:center;flex:none}
+.dj-neuro-image-stage{position:relative!important;display:flex!important;flex:1 1 auto!important;justify-content:center!important;align-items:center!important;min-height:370px!important;height:370px!important;overflow:hidden!important;background:#05070d}
+.dj-neuro-image-layer{position:relative;display:flex;align-items:center;justify-content:center;flex:none!important;transform-origin:center center;max-width:100%}
+.dj-neuro-image-layer canvas{display:block;width:min(390px,68vw)!important;max-width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.dj-neuro-focus .dj-neuro-image-layer canvas{width:min(320px,60vw)!important}
+.dj-neuro-sound-status{flex:none;display:flex;align-items:center;max-width:100%;min-height:35px;padding:7px 13px!important;white-space:normal;overflow-wrap:anywhere}
+.dj-neuro-bottom,.dj-neuro-metrics{flex:none;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:10px 13px!important;min-height:54px}
+.dj-neuro-metrics > div:first-child{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;min-width:0}
+.dj-neuro-metrics button{white-space:nowrap;margin-left:auto}
+.dj-neuro-footer{flex:none!important;display:flex!important;flex-wrap:wrap;align-items:center;min-height:65px;gap:12px;padding:12px 20px!important;background:white}
+.dj-neuro-footer>div{min-width:0}
+.dj-neuro-footer>div:nth-child(2){flex:1 1 200px!important;max-width:none!important}
+.dj-neuro-footer>div:nth-child(2) input{min-width:85px}
+@media(max-width:1200px){.dj-workspace-header{padding:0 16px}.dj-workspace-topline{align-items:flex-start}.dj-workspace-education{display:none}.dj-workspace-controls-left,.dj-workspace-controls-right{flex:1 1 400px}.dj-neuro-panel-grid{gap:10px!important;padding:10px!important}}
+@media(max-width:950px){.dj-neuro-panel-grid{grid-template-columns:minmax(0,1fr)!important}.dj-neuro-panel{min-height:480px!important}.dj-neuro-scanner{min-height:480px!important}.dj-neuro-image-stage{height:350px!important;min-height:350px!important}.dj-neuro-image-layer canvas{width:min(390px,75vw)!important}.dj-neuro-focus .dj-neuro-image-layer canvas{width:min(290px,65vw)!important}.dj-workspace-controls{gap:10px}.dj-workspace-controls-left,.dj-workspace-controls-right{flex:1 1 100%}}
+@media(max-width:560px){.dj-workspace-header{padding:0 12px}.dj-workspace-topline{align-items:flex-start;flex-wrap:wrap;gap:9px}.dj-workspace-top-actions{justify-content:flex-start}.dj-workspace-brand-title{font-size:17px}.dj-workspace-brand-title span{font-size:13px}.dj-workspace-controls-left,.dj-workspace-controls-right{gap:8px}.dj-workspace-input-label{flex:1 1 140px}.dj-workspace-select{max-width:none}.dj-neuro-panel-toolbar{padding:10px!important}.dj-neuro-image-stage{min-height:300px!important;height:300px!important}.dj-neuro-panel-title{flex:1 1 160px}.dj-neuro-panel{min-height:440px!important}.dj-workspace-audio-group{width:100%;justify-content:space-between}.dj-neuro-image-layer canvas{width:min(315px,76vw)!important}.dj-neuro-focus .dj-neuro-image-layer canvas{width:min(255px,66vw)!important}}
+@media(prefers-reduced-motion:reduce){.dj-neuro-shell *, .dj-neuro-shell *::before,.dj-neuro-shell *::after{animation:none!important;transition:none!important}}

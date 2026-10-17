@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "./workstation-v3.css";
+
+@layer base {
+  :root {
+    --color-primary-navy: #071B55;
+    --color-coral-accent: #FF554B;
+    --color-bg-white: #FFFFFF;
+    --color-bg-warm: #FFFDFB;
+    --color-neuro-blue: #EAF5FF;
+    --color-mint: #EAF9EF;
+    --color-peach: #FFF1EB;
+  }
+
+  body {
+    background-color: #FFFDFB;
+    color: #071B55;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Poppins', 'Inter', sans-serif;
+  }
+
+  .font-mono-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom clinical medical scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(7, 27, 85, 0.05);
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(7, 27, 85, 0.2);
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(7, 27, 85, 0.4);
+}
+
+.image-render-pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Card elevation tokens based on 8px spacing */
+.card-elevation-subtle {
+  box-shadow: 0 1px 3px 0 rgba(7, 27, 85, 0.05), 0 1px 2px -1px rgba(7, 27, 85, 0.05);
+}
+
+.card-elevation-interactive {
+  box-shadow: 0 4px 6px -1px rgba(7, 27, 85, 0.06), 0 2px 4px -2px rgba(7, 27, 85, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-elevation-interactive:hover {
+  box-shadow: 0 10px 15px -3px rgba(7, 27, 85, 0.1), 0 4px 6px -4px rgba(7, 27, 85, 0.05);
+}
+/* Shared DoosraJeevan accessibility and smooth loading */
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #ff554b;outline-offset:2px}
+
+
