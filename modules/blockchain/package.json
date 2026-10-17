@@ -1,0 +1,20 @@
+{
+  "name": "doosrajeevan-blockchain-bridge",
+  "version": "1.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "node server/index.js",
+    "deploy:amoy": "hardhat run scripts/deploy.js --network amoy",
+    "compile": "hardhat compile"
+  },
+  "dependencies": {
+    "ethers": "^6.13.0"
+  },
+  "devDependencies": {
+    "hardhat": "^2.22.0",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^4.9.3",
+    "dotenv": "^16.4.5"
+  }
+}
