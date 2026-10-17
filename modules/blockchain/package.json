@@ -1,19 +1,24 @@
 {
-  "name": "doosrajeevan-blockchain-bridge",
-  "version": "1.1.0",
+  "name": "doosrajeevan-local-blockchain",
+  "version": "2.0.0",
   "private": true,
   "type": "commonjs",
   "scripts": {
     "dev": "node server/index.js",
     "deploy:amoy": "hardhat run scripts/deploy.js --network amoy",
-    "compile": "hardhat compile"
+    "compile": "hardhat compile",
+    "node": "node node_modules/hardhat/internal/cli/cli.js node --hostname 127.0.0.1 --port 8545",
+    "deploy:local": "node node_modules/hardhat/internal/cli/cli.js run --no-compile scripts/deploy.js --network localhost",
+    "server": "node server/index.js"
   },
   "dependencies": {
-    "ethers": "^6.13.0"
+    "ethers": "^6.13.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
   },
   "devDependencies": {
-    "hardhat": "^2.22.0",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.0",
     "@openzeppelin/contracts": "^4.9.3",
     "dotenv": "^16.4.5"
   }

@@ -149,7 +149,10 @@ JSON FORMAT REQUIRED:
 
 // Vite middleware & Static serving
 async function startServer() {
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NEURO_API_ONLY === 'true') {
+    // In the integrated app, a dedicated Vite server serves the NeuroScan UI.
+    // This Express instance handles API calls only, preventing duplicate Vite middleware and HMR conflicts.
+  } else if (process.env.NODE_ENV !== 'production') {
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },

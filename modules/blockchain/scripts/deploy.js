@@ -1,25 +1,30 @@
-const hre = require("hardhat");
+// Deploys the ORIGINAL two contracts from the user-provided blockchain.zip.
+const hre = require('hardhat');
+const fs = require('node:fs');
+const path = require('node:path');
 
 async function main() {
   const [deployer] = await hre.ethers.getSigners();
-  console.log("Deploying with account:", deployer.address);
-
-  const Ledger = await hre.ethers.getContractFactory("DoosraLedger");
-  const ledger = await Ledger.deploy();
+  const network = await hre.ethers.provider.getNetwork();
+  const ledger = await (await hre.ethers.getContractFactory('DoosraLedger')).deploy();
   await ledger.waitForDeployment();
-  console.log("DoosraLedger deployed to:", await ledger.getAddress());
-
-  const PatientNFT = await hre.ethers.getContractFactory("PatientIdentityToken");
-  const patientNFT = await PatientNFT.deploy();
-  await patientNFT.waitForDeployment();
-  console.log("PatientIdentityToken deployed to:", await patientNFT.getAddress());
-
-  console.log("\nAdd these to your .env / frontend config:");
-  console.log("LEDGER_CONTRACT_ADDRESS=" + (await ledger.getAddress()));
-  console.log("PATIENT_NFT_CONTRACT_ADDRESS=" + (await patientNFT.getAddress()));
+  const nft = await (await hre.ethers.getContractFactory('PatientIdentityToken')).deploy();
+  await nft.waitForDeployment();
+  const deployment = {
+    network: hre.network.name,
+    chainId: Number(network.chainId),
+    deployedAt: new Date().toISOString(),
+    deployer: deployer.address,
+    ledger: await ledger.getAddress(),
+    patientNFT: await nft.getAddress(),
+    ledgerTx: ledger.deploymentTransaction()?.hash || null,
+    patientNFTTx: nft.deploymentTransaction()?.hash || null,
+  };
+  const dir = path.resolve(__dirname,'../deployments');
+  fs.mkdirSync(dir,{recursive:true});
+  const file=path.join(dir,`${hre.network.name}.json`);
+  fs.writeFileSync(file,JSON.stringify(deployment,null,2));
+  console.log('[DEPLOY] Real contract deployments confirmed', JSON.stringify(deployment,null,2));
+  console.log('[DEPLOY] Manifest:',file);
 }
-
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main().catch(e=>{console.error(e);process.exitCode=1});

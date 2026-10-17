@@ -140,7 +140,7 @@ async function startServer() {
       const bcRes = await fetch("http://localhost:4000/api/ledger", { signal: AbortSignal.timeout(8000) });
       if (bcRes.ok) {
         const bcData = await bcRes.json();
-        blockchainStatus = "online";
+        blockchainStatus = bcData.mode === "onchain" ? (bcData.network === "hardhat-local" ? "Hardhat local chain" : "testnet") : "offline";
         blockchainBlocks = bcData.blocks?.length || 0;
       }
     } catch {
@@ -164,10 +164,11 @@ async function startServer() {
         status: blockchainStatus,
         url: "http://localhost:4000",
         blocks: blockchainBlocks,
-        network: "Polygon Amoy (80002)",
+        network: "Hardhat local chain (chain ID 31337)",
         contracts: {
-          ledger: "0xF4718BfcD0Ccf2ba3888A2a20c8EB6E936Ab3E1a",
-          patientNFT: "0x23A7D2D9A8eef261811721106Ab5d271549A1d3B"
+          // No fabricated contract addresses: only return values explicitly configured by deployer.
+          ledger: process.env.LEDGER_CONTRACT_ADDRESS || null,
+          patientNFT: process.env.PATIENT_NFT_CONTRACT_ADDRESS || null
         }
       }
     });

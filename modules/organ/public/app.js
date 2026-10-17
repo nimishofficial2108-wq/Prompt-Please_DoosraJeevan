@@ -357,6 +357,7 @@ class OrganTwinApp {
   }
 
   navigate(viewId) {
+    if (viewId === 'neuroscan') { window.location.assign('/modules/neuro/'); return; }
     const views = [
       'view-donor-registration',
       'view-dashboard',
@@ -1443,7 +1444,7 @@ class OrganTwinApp {
 
     if (stateSelect) {
       const states = Array.from(new Set(hospitals.map(h => h.state))).sort();
-      let stateHtml = '<option value="ALL">All States / UTs (सम्पूर्ण भारत - ' + hospitals.length + ' Centers)</option>';
+      let stateHtml = '<option value="ALL">All States / UTs (' + hospitals.length + ' Centers)</option>';
       states.forEach(st => {
         const count = hospitals.filter(h => h.state === st).length;
         const selected = this.selectedDashboardState === st ? 'selected' : '';
@@ -2654,7 +2655,7 @@ class OrganTwinApp {
 
     const greeting = document.getElementById('consumerGreeting');
     const subheading = document.getElementById('consumerSubheading');
-    if (greeting) greeting.textContent = `${patient.name} (मरीज़ ID: ${patient.patient_id})`;
+    if (greeting) greeting.textContent = `${patient.name} (Patient ID: ${patient.patient_id})`;
     if (subheading) subheading.textContent = `National ${patient.organ_needed} Allocation Registry · ${patient.hospital}`;
 
     const container = document.getElementById('consumerPortalDynamicContent');

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap');
 :root {
   font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #0b225a;
@@ -305,3 +306,34 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
   html { scroll-behavior:auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration:.01ms !important; }
 }
+
+/* FINAL UNIFIED EXPERIENCE: homepage */
+
+:root {font-family:'Poppins',sans-serif;}
+html,body,button,input,select,textarea,.brand,.nav-link,.btn,h1,h2,h3,h4,h5,h6,p,span {font-family:'Poppins',sans-serif;}
+.number,.number-value,.numeric,.step-number,input[type=number],input[type=tel],.tabular-numbers {font-family:'Roboto',sans-serif!important;font-variant-numeric:tabular-nums;}
+.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:1120px;margin-inline:auto;gap:24px;}
+.service-card{min-height:340px;padding:36px;}
+.service-card h3{font-size:clamp(2rem,3.2vw,3.4rem);line-height:1.14;font-weight:800;letter-spacing:-.04em;}
+.service-card .card-content{margin-top:auto;margin-bottom:22px;}
+.service-card .card-head{min-height:62px;}
+.service-watermark{opacity:.22;}
+.card-icon{width:64px;height:64px;}
+.hero{padding-bottom:12px;}
+.hero-copy{justify-content:center;}
+.hero .hero-description,.service-card .card-subtitle,.service-card .card-description,.service-tag,.benefits,.how-section{display:none!important;}
+.hero h1{font-size:clamp(3rem,5vw,5.2rem);}
+.hero-buttons{margin-top:30px;}
+.tools-section{padding-top:20px;padding-bottom:38px;}
+.about-banner p:not(.eyebrow){display:none;}
+.about-banner{margin-top:12px;}
+.redirecting{min-height:50vh;display:grid;place-content:center;font-size:22px;}
+@media(max-width:800px){.service-grid{grid-template-columns:1fr;max-width:660px}.service-card{min-height:300px;padding:28px}}
+@media(max-width:600px){.hero-buttons{flex-wrap:wrap}.service-card h3{font-size:2.2rem}}
+
+/* Override legacy font shorthand declarations */
+body *, body *::before, body *::after{font-family:'Poppins',sans-serif!important;}
+body .number,body .numeric,body .number-value,body input[type=number],body input[type=tel]{font-family:'Roboto',sans-serif!important;}
+/* Position only the two primary services, nothing feels secondary */
+.tools-section .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+@media(max-width:800px){.tools-section .service-grid{grid-template-columns:1fr!important;}}

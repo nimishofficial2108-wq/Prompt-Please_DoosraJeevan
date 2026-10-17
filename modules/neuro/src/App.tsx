@@ -187,6 +187,10 @@ export default function App() {
 
   return (
     <div className="dj-neuro-shell relative w-full bg-[#F6FAFD] text-[#071B55] flex flex-col select-none">
+      <nav className="dj-global-nav" aria-label="DoosraJeevan main navigation">
+        <a className="dj-global-brand" href="/"><svg className="dj-global-svg" width="39" height="39" viewBox="0 0 60 60" fill="none" aria-hidden="true"><circle cx="21" cy="8" r="4.4" fill="#FF6255"/><circle cx="39" cy="8" r="4.4" fill="#FF6255"/><path d="M30 51.5 12.2 34.5C1.4 24.3 8.6 12.8 19.4 15.9c4.8 1.4 8 4.8 10.6 8.4 2.6-3.6 5.8-7 10.6-8.4 10.8-3.1 18 8.4 7.2 18.6L30 51.5Z" stroke="#FF6255" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round"/><path d="m21.6 34 7.2 7.3 13-14" stroke="#4A95D2" strokeWidth="5.8" strokeLinecap="round" strokeLinejoin="round"/></svg>DoosraJeevan</a>
+        <div className="dj-global-links"><a href="/">Home</a><a href="/modules/neuro/" aria-current="page">NeuroScan</a><a href="/modules/organ/">Organ Donation</a></div>
+      </nav>
       {/* Upload Patient Modal */}
       <UploadPatientModal
         isOpen={isUploadModalOpen}
@@ -228,19 +232,18 @@ export default function App() {
           <div className="dj-workspace-brand">
             <div className="dj-workspace-brand-icon"><Brain size={23} /></div>
             <div className="dj-workspace-brand-copy">
-              <div className="dj-workspace-brand-title">NeuroScan <span>CT Workstation</span><small>UI V3</small></div>
-              <div className="dj-workspace-patient-meta">
-                <span>{activePatient.patientName}</span>
-                <span className="dj-workspace-dot">·</span>
-                <span>{activePatient.medicalRecordNumber}</span>
-                <span className={`dj-workspace-status ${isBleed ? 'is-review' : 'is-normal'}`}>
-                  {isBleed ? `${activePatient.primarySubtype} · demo` : 'Synthetic normal scan'}
-                </span>
-              </div>
+              <div className="dj-workspace-brand-title">NeuroScan <span>CT Workstation</span></div>
+              {activePatient.patientName !== 'SYNTHETIC DEMO SCAN' && (
+                <div className="dj-workspace-patient-meta">
+                  <span>{activePatient.patientName}</span>
+                  <span className="dj-workspace-dot">·</span>
+                  <span>{activePatient.medicalRecordNumber}</span>
+                </div>
+              )}
             </div>
           </div>
           <div className="dj-workspace-top-actions">
-            <span className="dj-workspace-education">Educational demonstration • Not a medical diagnosis</span>
+
             <button type="button" className={`dj-workspace-button dj-audio-button ${soundReady ? 'dj-audio-ready' : ''}`}
               onClick={() => {
                 hudAudio.initCtx();

@@ -1,0 +1,22 @@
+/* DoosraJeevan unified module transition — intentionally shared across all three pages */
+:root{--dj-ink:#071b55;--dj-coral:#ff554b;--dj-poppins:'Poppins',system-ui,sans-serif}
+#dj-loading-screen{position:fixed;inset:0;z-index:2147483600;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 78% 20%,#eaf5ff 0,transparent 48%),linear-gradient(135deg,#fffdfb,#fff 56%,#f5faff);font-family:var(--dj-poppins);color:var(--dj-ink);transition:opacity .28s ease,visibility .28s ease}
+#dj-loading-screen.dj-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.dj-loading-content{width:min(430px,90vw);text-align:center;display:flex;align-items:center;flex-direction:column;padding:32px 24px}
+.dj-loading-mark{width:70px;height:70px;display:grid;place-items:center;border:2px solid #ffe5e0;background:#fff;border-radius:22px;box-shadow:0 16px 48px #071b5510;color:var(--dj-coral)}
+.dj-loading-mark svg{width:46px;height:46px}
+.dj-loading-wordmark{font-size:28px;font-weight:800;letter-spacing:-.05em;margin:22px 0 5px}
+.dj-loading-module{font-size:15px;font-weight:600;margin:0 0 26px}
+.dj-loading-progress{height:4px;background:#e6eef9;border-radius:10px;overflow:hidden;width:205px}
+.dj-loading-progress:after{content:"";display:block;width:45%;height:100%;background:linear-gradient(90deg,#ff9283,#ff554b);border-radius:10px;animation:dj-loader-move 1.4s ease-in-out infinite}
+.dj-loading-help{font-size:12px;color:#667793;margin-top:18px;line-height:1.5}
+.dj-loading-error{display:none;margin-top:24px;max-width:390px}
+#dj-loading-screen.dj-error .dj-loading-progress{display:none}
+#dj-loading-screen.dj-error .dj-loading-error{display:block}
+#dj-loading-screen.dj-error .dj-loading-help{display:none}
+.dj-loader-actions{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.dj-loader-actions a,.dj-loader-actions button{padding:11px 18px;border-radius:100px;font:600 13px var(--dj-poppins);cursor:pointer;text-decoration:none}
+.dj-loader-actions button{background:#ff554b;color:white;border:1px solid #ff554b}
+.dj-loader-actions a{border:1px solid #ccd7ea;color:var(--dj-ink);background:#fff}
+@keyframes dj-loader-move{0%{transform:translateX(-130%)}50%{transform:translateX(180%)}100%{transform:translateX(340%)}}
+@media(prefers-reduced-motion:reduce){.dj-loading-progress:after{animation:none;width:100%}#dj-loading-screen{transition:none}}

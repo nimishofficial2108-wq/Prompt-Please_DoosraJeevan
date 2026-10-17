@@ -24,7 +24,7 @@ const BLOCKCHAIN_BRIDGE_URL = "/api/blockchain";
   });
 
   function attachBridge(app) {
-    console.log("Attaching blockchain bridge (local demo or optional Polygon Amoy)...");
+    console.log("Attaching blockchain bridge (live local Hardhat chain or optional Polygon Amoy)...");
 
     // Load real on-chain ledger from Polygon Amoy
     app.loadRealLedgerFromChain = async function () {
@@ -33,7 +33,7 @@ const BLOCKCHAIN_BRIDGE_URL = "/api/blockchain";
         if (!res.ok) return;
         const data = await res.json();
         if (data.blocks && data.blocks.length > 0) {
-          if (data.mode !== "onchain") console.info("Local demonstrator ledger only; not an on-chain transaction.");
+          if (data.mode !== "onchain") console.warn("Blockchain chain unavailable or demo mode active.");
           console.log(`Loaded ${data.blocks.length} ${data.mode === "onchain" ? "on-chain" : "local demo"} events.`);
           // Format blocks for Doosra Jeevan UI
           const realBlocks = data.blocks.map(b => ({
@@ -44,9 +44,9 @@ const BLOCKCHAIN_BRIDGE_URL = "/api/blockchain";
             prevHash: b.prev_hash,
             currHash: b.curr_hash,
             mintingNode: data.mode === "onchain" ? `${(b.submitted_by || "").slice(0, 8)}... (Polygon Amoy)` : "Local simulated ledger",
-            status: data.mode === "onchain" ? "VALIDATED" : "DEMO",
+            status: data.mode === "onchain" ? "LOCAL CHAIN" : "DEMO",
             onChain: data.mode === "onchain",
-            explorerUrl: data.mode === "onchain" && b.submitted_by ? `https://amoy.polygonscan.com/address/${b.submitted_by}` : null
+            explorerUrl: data.mode === "onchain" && b.submitted_by ? (data.network === "amoy" ? `https://amoy.polygonscan.com/address/${b.submitted_by}` : null) : null
           })).reverse(); // newest first
 
           // Prepend real on-chain blocks to decision logs
@@ -82,8 +82,8 @@ const BLOCKCHAIN_BRIDGE_URL = "/api/blockchain";
         const registerRes = await fetch(`${BLOCKCHAIN_BRIDGE_URL}/patients/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ uid: `${fullName}_${age}_${bloodGroup}` }),
-          signal: AbortSignal.timeout(10000)
+          body: JSON.stringify({ uid: `DEMO_${crypto.randomUUID()}` }),
+          signal: AbortSignal.timeout(35000)
         });
 
         if (registerRes.status === 409) {
@@ -104,7 +104,7 @@ const BLOCKCHAIN_BRIDGE_URL = "/api/blockchain";
             action: `Prototype donor record created (${organ})`,
             clauseRef: "THOA Section 5 & NOTTO Decentralized Allocation Protocol",
           }),
-          signal: AbortSignal.timeout(10000)
+          signal: AbortSignal.timeout(35000)
         });
 
         if (!ledgerRes.ok) {
@@ -117,7 +117,7 @@ const BLOCKCHAIN_BRIDGE_URL = "/api/blockchain";
             mode: ledgerData.mode,
             blockNumber: Number(ledgerData.blockNumber),
             timestamp: new Date().toLocaleString(),
-            action: `Prototype donor record (${organ}) — ${ledgerData.mode === "onchain" ? "Polygon Amoy" : "LOCAL DEMO"}`,
+            action: `Prototype donor record (${organ}) — ${ledgerData.network === "amoy" ? "Polygon Amoy" : "LOCAL HARDHAT"}`,
             clause: "THOA Section 5 & NOTTO Decentralized Allocation Protocol",
             prevHash: ledgerData.prevHash,
             currHash: ledgerData.currHash,
@@ -126,7 +126,7 @@ const BLOCKCHAIN_BRIDGE_URL = "/api/blockchain";
             explorerUrl: ledgerData.explorerUrl,
             onChain: ledgerData.mode === "onchain"
           });
-          this.showToast(ledgerData.mode === "onchain" ? `Polygon Amoy transaction confirmed: #${ledgerData.blockNumber}` : `Local demo ledger event #${ledgerData.blockNumber} saved (NOT on-chain)`, "success");
+          this.showToast(ledgerData.mode === "onchain" ? `On-chain transaction confirmed: #${ledgerData.blockNumber}` : `Local demo ledger event #${ledgerData.blockNumber} saved (NOT on-chain)`, "success");
         }
       } catch (err) {
         console.warn("Blockchain bridge unavailable; continuing with original educational demo only:", err);

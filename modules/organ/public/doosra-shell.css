@@ -1,0 +1,60 @@
+/* DoosraJeevan integrated full-page Organ Donation experience */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap');
+:root{--font-heading:'Poppins',sans-serif;--font-sans:'Poppins',sans-serif;--font-family-base:'Poppins',sans-serif;--font-hindi:'Poppins',sans-serif;--font-mono:'Roboto',sans-serif;--font-base-size:15px;}
+html,body.gov-theme,body.gov-theme :where(button,input,select,textarea,h1,h2,h3,h4,h5,h6,p,a,span,label,div,table,th,td){font-family:'Poppins',sans-serif!important}
+body.gov-theme :where(.ticker-val,.number,.num,.stat-val,.stat-value,.metric-value,.metric-number,[id*=Count],[id*=Block],[id*=Height],input[type=number],input[type=tel]){font-family:'Roboto',sans-serif!important;font-variant-numeric:tabular-nums;}
+/* Single unified site navbar */
+.dj-global-nav{width:100%;min-height:76px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:13px max(32px,5vw);background:#fff;border-bottom:1px solid #ebf1f8;position:relative;z-index:100}
+.dj-global-brand{display:flex;gap:10px;align-items:center;font-size:26px;color:#071b55;text-decoration:none;font-weight:800;letter-spacing:-.05em}
+.dj-global-mark{color:#ff554b;font-size:30px;line-height:1}
+.dj-global-links{display:flex;align-items:center;gap:32px}
+.dj-global-links a{color:#071b55;font-size:14px;text-decoration:none;font-weight:600;white-space:nowrap}
+.dj-global-links a[aria-current=page]{border-bottom:2px solid #ff554b;padding:11px 0}
+/* Remove duplicate portal chrome and requested status/reset/debug UI — underlying logic remains */
+.integration-disclaimer,.gov-utility-bar,.tricolor-strip,.gov-header,.ticker-bar,
+.network-sync-pill,#btnRefreshSync,.sync-trigger-btn,
+#btnSidebarResetDb,#btnUtilityResetDb,.btn-clean-reset,.footer-reset-btn,.utility-reset-btn,
+.header-block-info,#headerBlockDisplay,#headerNottoBadge,.notto-badge,.sidebar-brand,
+.view-desc,.chart-card-sub,.portal-title-hi,.view-title-hi,.nav-section-title,.brand-title-sub,
+.preloader-namaste-hi,.preloader-subtitle,.preloader-prototype-badge,.ticker-metrics,
+.card-neuroscan,.panel-header-banner,#view-neuroscan .panel-header-banner,
+#view-neuroscan>div:nth-child(2),#view-neuroscan>div:nth-child(3),
+#btnRefreshSync,#headerNottoBadge,#headerBlockDisplay{display:none!important}
+/* Eliminate extra marketing / status lines, retain labels needed to operate forms */
+.view-title-en{color:#071b55!important;font-size:clamp(25px,2.5vw,37px)!important;font-weight:800!important;letter-spacing:-.04em;line-height:1.2!important;margin-bottom:16px!important}
+.app-shell{width:100%;background:#fffdfb!important;min-height:calc(100vh - 76px)!important}
+.app-main{min-width:0!important;}
+.app-sidebar{background:#fff!important;border-color:#e9eef7!important}
+.nav-item-btn{font-size:14px!important;font-weight:600!important;border-radius:12px!important}
+.view-container{padding:clamp(16px,3vw,32px)!important}
+.donor-form-card,.dashboard-card,.chart-card,.view-header,.stat-card,.form-section{border-radius:18px!important}
+/* Remove dense verbose notes but retain functional form field assistance. */
+.view-header .view-desc,.view-header p,.view-title-hi,.integration-disclaimer{display:none!important}
+/* Make previously duplicate NeuroScan panel navigable by top nav, not obsolete backend cards */
+#view-neuroscan:before{content:'NeuroScan is available from the main navigation above.';display:block;font-size:17px;font-weight:600;padding:30px 22px;color:#071b55;background:#eaf5ff;border-radius:16px}
+#view-neuroscan>div{display:none!important}
+/* The old Hindi-only headings are removed; English headings are emphasized */
+.modal-title-hi,.preloader-namaste-hi,.view-title-hi,.brand-title-sub{display:none!important}
+@media(max-width:800px){.dj-global-nav{min-height:70px;padding:12px 18px;flex-wrap:wrap}.dj-global-links{gap:18px}.dj-global-brand{font-size:22px}.app-shell{min-height:calc(100vh - 70px)!important}}
+@media(max-width:540px){.dj-global-links{width:100%;justify-content:space-between}.dj-global-links a{font-size:12px}.view-title-en{font-size:25px!important}}
+
+.dj-global-svg{width:39px;height:39px;flex-shrink:0}
+.dj-small-legal{padding:14px 22px;text-align:center;background:#fff;color:#667897;font-size:11px!important;border-top:1px solid #e7edf5}
+/* Suppress unreliable simulation badges and presentation-only technical overlays */
+#tickerBar,#headerBlockDisplay,#headerNottoBadge,.live-tag,#navAnomalyScanner .live-tag,
+#btnUtilityResetDb,#btnSidebarResetDb,#btnRefreshSync,
+#view-neuroscan .panel-header-banner,
+#view-dashboard .chart-card-sub,
+#view-waitlists .view-desc,#view-donor-registration .view-desc,
+.preloader-prototype-badge{display:none!important}
+/* Larger English feature headings across all views */
+.view-container .view-title-en,.view-container .view-title{font-size:clamp(26px,2.3vw,36px)!important;font-weight:800!important;color:#071b55!important;letter-spacing:-.035em}
+.view-header{border:0!important;box-shadow:none!important;background:transparent!important}
+
+body.gov-theme .dashboard-stat-number,body.gov-theme .stat-number,body.gov-theme .counter,body.gov-theme .number-cell,body.gov-theme .ticker-val,body.gov-theme .stat-val{font-family:'Roboto',sans-serif!important}
+
+.dj-sidebar-toggle{display:none;border:1px solid #d6e4f4;background:#fff;border-radius:12px;padding:10px 14px;color:#071b55;font-weight:700;font-family:Poppins,sans-serif!important}
+@media(max-width:900px){.dj-sidebar-toggle{display:inline-flex;align-items:center;gap:5px}}
+
+/* Keep diagnostics in the developer console, not in the user-facing agent workspace */
+#masterAgentTelemetryLogs[hidden]{display:none!important}

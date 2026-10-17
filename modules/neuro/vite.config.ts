@@ -15,7 +15,11 @@ export default defineConfig(() => {
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
+      strictPort: true,
+      host: '127.0.0.1',
+      port: 5175,
+      proxy: { '/api/analyze-ich': { target: 'http://127.0.0.1:3003', changeOrigin: true } },
+      hmr: false, // Embedded Vite dev server uses the parent site's navigation; avoids shared WebSocket port 24678 conflicts.
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },

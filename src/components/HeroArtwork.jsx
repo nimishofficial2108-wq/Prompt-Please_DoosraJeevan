@@ -48,14 +48,9 @@ export default function HeroArtwork() {
         <path d="M80 128c-17 1-26-9-27-22-14 4-27-4-31-18-4-12-1-20 5-27-11-11-9-24 2-33 6-5 12-7 21-6 5-13 18-20 32-16 9-9 28-7 36 1 17-5 32 5 36 21 15 3 23 15 23 29 7 8 8 22 0 31-2 18-16 29-30 27-4 14-15 22-30 21l-17 19-12-2-4-24Z" />
         <path d="M91 18c-7 11-7 28-1 39m-10 9c-16-11-29-1-31 10m42-19c14-14 26-11 39-3m-61 58c11-16 28-13 37-9m-30-73c-13-6-26-3-30 9m72 42c15 4 22-1 29-10m-14 47c-5-11-18-13-28-8m-4-23c8-8 19-13 31-9" />
       </g>
-      {/* Report mark: offset paper with simple graph strokes */}
-      <g transform="translate(574 203) rotate(9)" opacity=".51">
-        <rect width="129" height="154" rx="15" fill="#E9F4FF" />
-        <rect x="17" y="11" width="104" height="125" rx="10" fill="#F8FCFF" stroke="#A1C9F5" strokeWidth="3" />
-        <path d="M32 36h55M32 50h65M32 65h43M32 123h60" stroke="#9DC5ED" strokeWidth="5" strokeLinecap="round" />
-        <rect x="38" y="90" width="12" height="24" rx="2" fill="#8BBDEB" />
-        <rect x="57" y="80" width="12" height="34" rx="2" fill="#8BBDEB" />
-        <rect x="76" y="68" width="12" height="46" rx="2" fill="#8BBDEB" />
+      {/* Organ Donation: a soft heart outline linked to the brain and doctor */}
+      <g transform="translate(605 236)" stroke="#F4A99C" strokeWidth="6" opacity=".55" fill="#FFEAE5" strokeLinejoin="round">
+        <path d="M57 96 9 48C-13 19 18-14 47 8l10 9 10-9C96-14 127 19 105 48L57 96Z" />
       </g>
     </svg>
   );

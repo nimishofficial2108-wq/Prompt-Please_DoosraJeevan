@@ -67,3 +67,23 @@
 button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #ff554b;outline-offset:2px}
 
 
+
+/* Poppins/Roboto: use Roboto for counters, percentages, measurements and numeric inputs. */
+:root {--dj-poppins:'Poppins',system-ui,sans-serif;--dj-roboto:'Roboto',sans-serif}
+html,body,#root,button,input,select,textarea {font-family:var(--dj-poppins)!important}
+.dj-neuro-shell, .dj-neuro-shell :where(h1,h2,h3,h4,h5,p,span,label,button,select,a){font-family:var(--dj-poppins)!important}
+.dj-neuro-shell .font-mono-num,.dj-neuro-shell [class*="numeric"],.dj-neuro-shell input[type=number],.dj-neuro-shell .dj-workspace-patient-meta .dj-workspace-dot {font-family:var(--dj-roboto)!important;font-variant-numeric:tabular-nums}
+.dj-workspace-education,.dj-workspace-brand-title small {display:none!important}
+.dj-global-nav{height:74px;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(30px,5vw);border-bottom:1px solid #e9eef7;gap:20px;position:relative;z-index:55}
+.dj-global-brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--dj-poppins)!important;font-size:25px;font-weight:800;color:#071b55;text-decoration:none;letter-spacing:-.055em}
+.dj-global-mark{color:#ff554b;font-size:30px;line-height:1}
+.dj-global-links{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.dj-global-links a{text-decoration:none;font-weight:600;font-size:14px;color:#071b55;white-space:nowrap}
+.dj-global-links [aria-current=page]{border-bottom:2px solid #ff554b;padding:11px 0}
+.dj-neuro-shell{min-height:100vh;}
+.dj-neuro-workstation{min-height:460px;}
+@media(max-width:680px){.dj-global-nav{height:auto;min-height:68px;padding:12px 18px;flex-wrap:wrap}.dj-global-brand{font-size:22px}.dj-global-links{gap:16px}.dj-neuro-workstation{min-height:520px}}
+
+.dj-global-svg{width:39px;height:39px;flex-shrink:0}
+.dj-neuro-shell>.dj-neuro-workstation{flex:1 1 auto}
+.dj-neuro-shell .font-mono,.dj-neuro-shell .font-mono-num{font-family:'Roboto',sans-serif!important}

@@ -5,14 +5,12 @@ import {
   Eye, EyeOff, LockKeyhole, LogOut, Menu, Search, ShieldCheck, Sparkles, UserRound, UsersRound, X,
 } from 'lucide-react';
 import BrandLogo from './components/BrandLogo.jsx';
-import IntegratedModulePage from './pages/IntegratedModulePage.jsx';
 import HeroArtwork from './components/HeroArtwork.jsx';
 import { services, isExternalService, serviceHref } from './config/services.js';
 
 const iconFor = {
   neuroscan: Brain,
   donation: Heart,
-  reports: FileText,
 };
 
 function ServiceLink({ service, className, children, onClick, ariaLabel }) {
@@ -61,13 +59,12 @@ function ServiceCard({ service }) {
     <article className={`service-card service-${service.id}`}>
       <div className="card-head">
         <div className="card-icon"><Icon aria-hidden="true" size={43} strokeWidth={1.85} /></div>
-        <span className="service-tag">{service.badge}</span>
+
       </div>
       <div className="service-watermark" aria-hidden="true"><Icon size={168} strokeWidth={1.2} /></div>
       <div className="card-content">
         <h3>{service.name}</h3>
-        <p className="card-subtitle">{service.headline}</p>
-        <p className="card-description">{service.description}</p>
+
       </div>
       <div className="card-actions">
         <ServiceLink service={service} className="btn card-cta">{service.action}<ArrowRight size={21} strokeWidth={1.8} /></ServiceLink>
@@ -110,7 +107,7 @@ function HomePage() {
             <div className="hero-copy">
               <p className="eyebrow">ONE PLATFORM. HEALTHIER TOMORROWS.</p>
               <h1 id="hero-title">Smarter Care,<br /><span className="highlight-coral">Brighter</span> Tomorrows.</h1>
-              <p className="hero-description">AI-assisted tools for brain health, organ donation awareness and clearer medical report insights — simple, approachable and accessible to everyone.</p>
+        
               <div className="hero-buttons">
                 <Link to="/#tools" className="btn btn-primary hero-primary">Explore Our Tools <ArrowRight size={20} /></Link>
                 <Link to="/#about" className="btn btn-outline hero-secondary">Learn More</Link>
@@ -127,25 +124,18 @@ function HomePage() {
           </div>
         </section>
 
-        <div className="content-width"><BenefitStrip /></div>
+
 
         <section className="about-banner content-width" id="about" aria-labelledby="about-title">
           <div>
             <p className="eyebrow">A HEALTHIER TOMORROW</p>
             <h2 id="about-title">Technology, care and community — together.</h2>
-            <p>Three useful services in one welcoming place. Pick what you need, understand your options, and take the next step at your own pace.</p>
+            <p></p>
           </div>
-          <Link to="/#how-it-works" className="btn btn-primary about-cta">Learn More <ArrowRight size={20} /></Link>
+          <Link to="/#tools" className="btn btn-primary about-cta">View Services <ArrowRight size={20} /></Link>
         </section>
 
-        <section className="how-section content-width" id="how-it-works" aria-labelledby="how-title">
-          <div className="how-intro"><p className="eyebrow">SIMPLE BY DESIGN</p><h2 id="how-title">Here when you need a little clarity.</h2><p>Choose the right service without having to navigate a complicated healthcare portal.</p></div>
-          <div className="how-steps">
-            <div><span className="step-number">01</span><h3>Choose a tool</h3><p>Start with brain health, donation information or medical reports.</p></div>
-            <div><span className="step-number">02</span><h3>Follow clear steps</h3><p>Each service is focused on one task, with accessible guidance.</p></div>
-            <div><span className="step-number">03</span><h3>Stay informed</h3><p>Use what you learn to support conversations and decisions with professionals.</p></div>
-          </div>
-        </section>
+
       </main>
       <Footer />
     </>
@@ -159,7 +149,7 @@ function Footer() {
         <div><BrandLogo /><p>Care begins with understanding.</p></div>
         <div className="footer-links"><Link to="/">Home</Link><Link to="/#tools">Explore services</Link><Link to="/#about">About</Link></div>
       </div>
-      <p className="footer-disclaimer content-width">DoosraJeevan is an informational technology platform. AI outputs do not replace medical diagnosis, professional advice, or official organ donation procedures.</p>
+      <p className="footer-disclaimer content-width">For demonstration only. Clinical decisions and official registration require qualified professionals and authorized processes.</p>
     </footer>
   );
 }
@@ -174,7 +164,7 @@ function ServicePlaceholder({ service }) {
       <h1>{service.name}</h1>
       <h2>{service.headline}</h2>
       <p>{service.longDescription}</p>
-      <div className="placeholder-note"><CheckCircle2 size={22} aria-hidden="true" /><span>{service.id === 'reports' ? 'Report Analysis is paused for this integration build. NeuroScan and Organ Donation are available to test now.' : 'This module is not available in the current build.'}</span></div>
+      <div className="placeholder-note"><CheckCircle2 size={22} aria-hidden="true" /><span>{'This module is not available in the current build.'}</span></div>
       <div className="placeholder-actions"><Link className="btn btn-primary" to="/#tools">Back to all services <ArrowRight size={18} /></Link><Link className="btn btn-outline" to="/">Go Home</Link></div>
     </main>
   );
@@ -194,7 +184,7 @@ function SearchDialog({ onClose }) {
     <div className="modal-backdrop" onMouseDown={onClose}>
       <div className="dialog search-dialog" role="dialog" aria-modal="true" aria-label="Search healthcare services" onMouseDown={(e) => e.stopPropagation()}>
         <div className="dialog-header"><h2>What can we help with?</h2><button type="button" className="icon-action" onClick={onClose} aria-label="Close search"><X size={23} /></button></div>
-        <label className="search-input-wrap"><Search size={20} aria-hidden="true" /><input ref={inputRef} placeholder="Try ‘brain scan’, ‘donation’, or ‘report’" value={query} onChange={e => setQuery(e.target.value)} aria-label="Search for a service" /></label>
+        <label className="search-input-wrap"><Search size={20} aria-hidden="true" /><input ref={inputRef} placeholder="Try ‘brain scan’ or ‘donation’" value={query} onChange={e => setQuery(e.target.value)} aria-label="Search for a service" /></label>
         <div className="search-results" aria-live="polite">
           {results.length ? results.map(s => {
             const Icon = iconFor[s.id];
@@ -246,7 +236,7 @@ function SignInDialog({ onClose, onLogin, onLogout, currentUser }) {
             <div className="signin-symbol"><UserRound size={30} strokeWidth={1.65} /></div>
             <span className="demo-label">DEMO ACCOUNT</span>
             <h2 id="signin-heading">Welcome back, {currentUser.name}!</h2>
-            <p>You're signed in to the DoosraJeevan demo. Explore the three healthcare services from the homepage.</p>
+            <p>You're signed in to the DoosraJeevan demo. Explore both healthcare services from the homepage.</p>
             <div className="signin-actions">
               <Link to="/#tools" onClick={onClose} className="btn btn-primary">Explore our tools <ArrowRight size={18} /></Link>
               <button className="btn btn-outline" type="button" onClick={() => { onLogout(); onClose(); }}><LogOut size={17} /> Sign Out</button>
@@ -295,6 +285,8 @@ function ScrollToHash() {
   return null;
 }
 
+function FullPageRedirect({to}) { useEffect(() => { window.location.replace(to); },[to]); return <main className="redirecting" id="main">Opening service…</main>; }
+
 export default function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
@@ -314,7 +306,8 @@ export default function App() {
       <Header onOpenSearch={() => setSearchOpen(true)} onOpenSignIn={() => setSignInOpen(true)} currentUser={currentUser} />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {services.map(service => <Route key={service.id} path={service.path} element={<>{!isExternalService(service) && (service.id === 'neuroscan' || service.id === 'donation') ? <IntegratedModulePage service={service} /> : <ServicePlaceholder service={service} />}<Footer /></>} />)}
+        <Route path='/neuroscan' element={<FullPageRedirect to='/modules/neuro/'/>} />
+        <Route path='/organ-donation' element={<FullPageRedirect to='/modules/organ/'/>} />
         <Route path="*" element={<main className="placeholder-page content-width" id="main"><h1>Page not found</h1><p>We couldn't find that page.</p><Link className="btn btn-primary" to="/">Go back home <ArrowRight size={18} /></Link></main>} />
       </Routes>
       {searchOpen && <SearchDialog onClose={() => setSearchOpen(false)} />}
